@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>레드향 주문하기</h1>
+    <div class="containal">
+        <form onsubmit="check()">
+            <fieldset>
+                <legend>상품선택</legend>
+                <p><b>주문할 상품을 선택해 주세요</b></p>
+                <ul id="product">
+                    <li>
+                        <label> <input type="checkbox" value="s_3">
+                            선물용 3kg
+                        </label>
+                        <input type="number"><small> 개</small>
+                    </li>
+                    <li>
+                        <label> <input type="checkbox" value="s_5">
+                            선물용 5kg
+                        </label>
+                        <input type="number"><small> 개</small>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" value="yes" name="optCheck" checked> 선물 포장
+                        </label>
+                        <label>
+                            <input type="radio" value="no" name="optCheck"> 선물 포장 안함
+                        </label>
+                    </li>
+                </ul>                
+            </fieldset>
+            <fieldset>
+                <legend>배송 정보</legend>
+                <ul>
+                    <li>
+                        <label for="user-name">이름</label>
+                        <input type="text" id="user-name" autofocus>
+                    </li>
+                    <li>
+                        <label for="addr">주소</label>
+                        <input type="text" id="addr"
+                        placeholder="주소는 도로명 주소를 사용합니다">
+                    </li>
+                    <li>
+                        <label for="email">이메일</label>
+                        <input type="email" id="email">
+                    </li>
+                    <li>
+                        <label for="d-day">배송일 지정</label>
+                        <input type="date" id="d-day">
+                    </li>
+                    <li>
+                        <label for="memo">메모</label>
+                        <textarea name="memo" id="memo"
+                        cols="40" rows="4"></textarea>
+                    </li>
+                    <li>
+                        <label for="password">비밀번호</label>
+                        <input type="password" id="password">
+                    </li>
+                </ul>
+                <label>가입경로</label>
+                <select name="searchPath">
+                    <option value="blog">블로그</option>
+                    <option value="search">검색</option>
+                    <option value="sns">SNS</option>
+                </select>
+            </fieldset>
+            <div>
+                <button type="submit">주문하기</button>
+                <button type="reset">취소하기</button>
+                <!-- reset: 모든 html 타입을 취소해줌
+                    submit: 부모태그에서부터 정보를 보내줌 -->
+            </div>
+        </form>
+    </div>
+<script>
+    function check() {
+        event.preventDefault();
+        // 이름 input 상자를 검색 변수 지정
+        let userName = document.querySelector('#user-name');
+        let addr = document.querySelector('#addr');
+        // 이름이 비어있는지 검사
+        if (userName.value == '') {
+            alert('이름은 필수입니다.')
+            userName.focus();
+        } else if (addr.value == '') {
+            alert('주소는 필수입니다.')
+            addr.focus();
+        }
+    }
+</script>
+</body>
+</html>

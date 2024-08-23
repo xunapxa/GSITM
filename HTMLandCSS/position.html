@@ -1,0 +1,41 @@
+<html>
+<head>
+    <style>
+        /* 자식을 이동시키려면 position을 세팅*/
+        html {border:1px solid gray}
+        div {
+            border: 5px solid tomato;
+            margin: 10px;
+        }
+        #me {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #parent {
+            position: relative;
+            height: 2000px;
+        }
+        #badge {
+            position: fixed;
+            background-color: black;
+            color: white;
+            width: 100px;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="other">other</div>
+    <div id="parent">
+        parent
+        <div id="me">
+            me
+        </div>
+        <div id="badge">Badge</div>
+    </div>
+</body>
+</html>

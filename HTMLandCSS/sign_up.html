@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./sign_up.css">
+</head>
+    <h1>회원 가입을 환영합니다</h1>
+<body>
+    <div class="containal">
+    <form onsubmit="sign_up_check()">
+        <fieldset>
+            <legend>사용자 정보</legend>
+            <ul>
+                <li>
+                    <label for="name">아이디</label>
+                    <input type="text" id="name" autofocus
+                        placeholder="4자 ~ 10자 사이, 공백없이">
+                </li>
+                <li>
+                    <label for="email">이메일</label>
+                    <input type="email" id="email">
+                </li>
+                <li>
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" 
+                    placeholder="문자와 숫자, 특수 기호 포함">
+                </li>
+                <li>
+                    <label for="passwordre">비밀번호 확인</label>
+                    <input type="password" id="passwordre">
+                </li>
+                <li>
+                    <label for="path">가입 경로</label>
+                    <select id="path">
+                        <option value="blog">블로그</option>
+                        <option value="sns">SNS</option>
+                        <option value="etc">기타</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="memo">메모</label>
+                    <textarea name="memo" id="memo"
+                    cols="40" rows="4" placeholder="남길 말씀"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>이벤트와 새로운 소식</legend>
+                <label>
+                    <input type="radio" value="yes" id="maily" name="mail"> 메일 수신
+                </label>
+                <label>
+                    <input type="radio" value="no" id="mailn" name="mail"> 메일 수신 안함
+                </label>
+        </fieldset>
+        <div id="buttons">
+            <input type="submit" value="가입하기">
+            <input type="reset" value="취소">
+        </div>
+
+    </form>
+</div>
+    <script>
+        function sign_up_check() {
+            event.preventDefault();
+            let ID = document.querySelector('#name')
+            // $(uid).val() 제이쿼리 문법
+            let passWord = document.querySelector('#password')
+            let passWordRe = document.querySelector('#passwordre')
+            let email = document.querySelector('#email')
+            let intro = document.querySelector('#path')
+            let memo = document.querySelector('#memo')
+            let maily = document.querySelector('#maily')
+            let mailn = document.querySelector('#mailn')
+            let mail = document.getElementsByName('mail')
+
+            let mailRe = '';
+            mail.forEach((mail)=> {
+                if(mail.checked) {
+                    if (mail.value == 'yes') {
+                        mailRe = '메일수신'
+                    } else {
+                        mailRe = '메일수신 안함'
+                    }
+                }
+            })
+            let idLenth = ID.value.length
+            if (idLenth < 4 || idLenth > 10 || ID.value == '' ) {
+                alert('아이디를 4자 ~ 10자 사이로 입력하세요')
+                ID.focus();
+            }else if (passWord.value == '') {
+                alert('비밀번호를 입력하세요')
+                passWord.focus();
+            } else if (passWord.value != passWordRe.value) {
+                alert('비밀번호가 같지 않습니다 다시 입력하세요')
+                passWord.focus();
+            }
+
+            let result = '';
+            result = result + '아이디 : ' + ID.value + '\n';
+            result = result + '이메일 : ' + email.value + '\n';
+            result = result + '비밀번호 : ' + passWord.value + '\n';
+            result = result + '가입경로 : ' + intro.value + '\n';
+            result = result + '메모 : ' + memo.value + '\n';
+            result = result + '메일수신여부 : ' + mailRe + '\n';
+            alert(result)
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 300px;
+            height: 300px;
+            background-color: gold;
+        }
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <p>첫번째 문단</p>
+    <p>두번째 문단</p>
+    <button id="btn_1">버튼</button>
+
+    <div class="outer">
+        <div class="inner">
+
+        </div>
+    </div>
+
+    <form>
+        <input type="text"><br>
+        <input type="password">
+    </form>
+    <!-- password input 상자가 선택되면 핑크색
+        밖으로 빠져나오면 원래대로 -->
+
+<script>
+        $(document).ready(function() {
+            $("p").mouseenter(function () { 
+                $(this).css("background-color" , "green")
+            });
+            $("p").mouseleave(function () { 
+                $(this).css("background-color" , "")
+            });
+            $(".outer").mouseover(function () { 
+                console.log("Outer MouseOver Event...")
+            });
+            $(".outer").mouseenter(function () { 
+                console.log("Outer MouseEnter Event...")
+            });
+            $("[type = 'password']").on("focus", function () { 
+            $(this).css("background-color", "pink");
+            }); 
+            $("[type]").on("blur" , function () { 
+            $(this).css("background-color", "");
+            });
+            $(".inner").on("click", function() {
+                $(this).css("background-color" , "red").hide('slow');
+            })
+        })
+</script>
+</body>
+
+</html>

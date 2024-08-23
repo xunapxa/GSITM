@@ -1,0 +1,39 @@
+<html>
+<header>
+    <style>
+        .container {
+            background-color: powderblue;
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .item {
+            /* margin: 5px; */
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+            text-align: center;
+            align-content: center;
+            width: 100px;
+            height: 100px;
+        }
+        .item:nth-child(2) {
+            /* flex-grow: 2; */
+            flex-basis: 200px;
+            flex-shrink: 0;
+            /* 0 : 수축을 허용하지 않음, 1 : 수축을 허용함 */
+        }
+    </style>
+</header>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+</html>

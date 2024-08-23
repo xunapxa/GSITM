@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn"> callback </button>
+    <p>콜백 함수 테스트 페이지 입니다.</p>
+    <div class="chain">
+        <span>체이닝 연습</span>
+    </div>
+</body>
+    <script>
+        $(document).ready(function() {
+            $(".btn").on("click" , function() {
+                $("p").hide("slow",function() { // 콜백함수 앞선 함수 실행 후
+                    // alert("모두사라짐")         // 다음 함수 실행
+                })
+                $(".chain").css("background-color" , "red")
+                .slideUp(1000)
+                .slideDown(1000)
+            })
+        })
+    </script>
+</html>
